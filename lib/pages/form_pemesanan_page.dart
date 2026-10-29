@@ -71,19 +71,15 @@ class _FormPemesananPageState
 
           const SizedBox(height: 16),
 
-          // Judul untuk pilihan metode pengiriman
           const Text('Metode Pengiriman'),
 
           RadioListTile<String>(
             title: const Text('Diantar'),
 
-            // Nilai pilihan ini adalah diantar.
+          
             value: 'Diantar',
 
-            // Menentukan pilihan yang sedang aktif.
             groupValue: metodePengiriman,
-
-            // Dipanggil ketika pengguna memilih diantar.
             onChanged: (value) {
               setState(() => metodePengiriman = value!);
             },
@@ -93,8 +89,6 @@ class _FormPemesananPageState
             title: const Text('Ambil di Tempat'),
             value: 'Ambil di Tempat',
 
-            // Radio dengan value yang sama dengan groupValue
-            // akan ditampilkan sebagai pilihan aktif.
             groupValue: metodePengiriman,
             onChanged: (value) {
               setState(() => metodePengiriman = value!);
@@ -106,8 +100,7 @@ class _FormPemesananPageState
               Checkbox(
                 value: setuju,
                 onChanged: (value) {
-                  // Jika value null, gunakan false sebagai
-                  // nilai pengganti.
+
                   setState(() => setuju = value ?? false);
                 },
               ),

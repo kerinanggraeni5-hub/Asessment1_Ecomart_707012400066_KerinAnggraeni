@@ -14,9 +14,6 @@ class Produk {
 
 String formatRupiah(int nilai) {
   final angka = nilai.toString();
-
-  // StringBuffer digunakan untuk menyusun teks hasil
-  // dengan lebih praktis.
   final hasil = StringBuffer('Rp');
 
   for (var i = 0; i < angka.length; i++) {
@@ -40,8 +37,6 @@ class KatalogPage extends StatefulWidget {
 
 class _KatalogPageState extends State<KatalogPage> {
 
-  // Daftar produk yang tersedia.
-  // const menunjukkan data produk ini bersifat tetap.
   final List<Produk> produk = const [
     Produk(
       produk: 'Pupuk Kompos Organik',
@@ -73,8 +68,6 @@ class _KatalogPageState extends State<KatalogPage> {
             child: Column(
               children: [
 
-                // Consumer mendengarkan perubahan jumlah favorit
-                // dari FavoritProvider.
                 Consumer<FavoritProvider>(
                   builder: (context, favorit, child) =>
                       Text(
@@ -87,10 +80,9 @@ class _KatalogPageState extends State<KatalogPage> {
                   builder: (context, jumlah) => Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Menampilkan jumlah barang di keranjang.
+
                       Text('Barang di keranjang: $jumlah'),
 
-                      // Tombol untuk mengurangi jumlah keranjang.
                       IconButton(
                         tooltip: 'Kurangi barang dari keranjang',
 
@@ -109,18 +101,14 @@ class _KatalogPageState extends State<KatalogPage> {
             ),
           ),
 
-          // Expanded menggunakan sisa ruang yang tersedia
-          // untuk menampilkan daftar produk.
           Expanded(
             child: ListView.builder(
 
-              // Jumlah item yang dibuat sesuai jumlah produk.
               itemCount: produk.length,
               itemBuilder: (context, index) {
 
                 final item = produk[index];
 
-                // Card membungkus informasi setiap produk.
                 return Card(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 12,
@@ -140,7 +128,6 @@ class _KatalogPageState extends State<KatalogPage> {
                           ),
                         ),
 
-                        // Menampilkan harga yang telah diformat.
                         Text(formatRupiah(item.harga)),
 
                         Row(
@@ -148,8 +135,6 @@ class _KatalogPageState extends State<KatalogPage> {
 
 
                             IconButton(
-                              // Tombol dinonaktifkan jika jumlah
-                              // sudah 1 agar tidak kurang dari 1.
                               onPressed: jumlahPembelian[index] > 1
                                   ? () => setState(
                                         () => jumlahPembelian[index]--,
@@ -158,10 +143,8 @@ class _KatalogPageState extends State<KatalogPage> {
                               icon: const Icon(Icons.remove),
                             ),
 
-                            // Menampilkan jumlah pembelian saat ini.
                             Text('${jumlahPembelian[index]}'),
 
-                            // Tombol untuk menambah jumlah pembelian.
                             IconButton(
                               onPressed: () => setState(
                                 () => jumlahPembelian[index]++,
@@ -171,13 +154,10 @@ class _KatalogPageState extends State<KatalogPage> {
                           ],
                         ),
 
-                        // Wrap membuat tombol dapat berpindah
-                        // ke baris berikutnya jika ruang tidak cukup.
                         Wrap(
                           spacing: 8,
                           children: [
 
-                            // Tombol untuk menambah jumlah favorit.
                             OutlinedButton.icon(
                               onPressed: () => context
                                   .read<FavoritProvider>()
@@ -187,8 +167,6 @@ class _KatalogPageState extends State<KatalogPage> {
                               label: const Text('Tambah Favorit'),
                             ),
 
-                            // Tombol untuk menambahkan jumlah barang
-                            // yang dipilih ke keranjang melalui Cubit.
                             FilledButton.icon(
                               onPressed: () => context
                                   .read<BelanjaCubit>()
@@ -208,8 +186,7 @@ class _KatalogPageState extends State<KatalogPage> {
             ),
           ),
 
-          // Tombol kembali menutup halaman katalog
-          // dan kembali ke halaman sebelumnya.
+
           Padding(
             padding: const EdgeInsets.all(12),
             child: OutlinedButton(

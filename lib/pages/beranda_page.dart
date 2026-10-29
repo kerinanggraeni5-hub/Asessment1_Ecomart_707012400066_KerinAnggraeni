@@ -9,8 +9,6 @@ import 'form_pemesanan_page.dart';
 import 'katalog_page.dart';
 import 'lokasi_page.dart';
 
-// StatelessWidget digunakan karena halaman beranda tidak
-// memiliki state lokal yang perlu diubah secara langsung.
 class BerandaPage extends StatelessWidget {
   const BerandaPage({super.key});
 
@@ -19,11 +17,9 @@ class BerandaPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('EcoMart - Produk Daur Ulang')),
 
-      // Padding memberikan jarak antara isi halaman
       body: Padding(
         padding: const EdgeInsets.all(20),
 
-        // ListView memungkinkan isi halaman digulir
         child: ListView(
           children: [
             const Text(
@@ -34,7 +30,6 @@ class BerandaPage extends StatelessWidget {
               ),
             ),
 
-            // Memberikan jarak vertikal sebesar 10.
             const SizedBox(height: 10),
 
             const Text(
@@ -42,14 +37,11 @@ class BerandaPage extends StatelessWidget {
               'keranjang belanja, formulir pemesanan, dan peta lokasi ',
             ),
 
-            // Memberikan jarak sebelum tombol navigasi.
             const SizedBox(height: 24),
 
-            // Tombol untuk membuka halaman katalog produk.
             ElevatedButton(
               onPressed: () {
-                // Navigator.push membuka halaman baru
-                // di atas halaman yang sedang ditampilkan.
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -61,7 +53,6 @@ class BerandaPage extends StatelessWidget {
             ),
             const SizedBox(height: 15),
 
-            // Tombol untuk membuka formulir pemesanan.
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -75,7 +66,7 @@ class BerandaPage extends StatelessWidget {
             ),
               const SizedBox(height: 15),
 
-            // Tombol untuk membuka halaman lokasi.
+
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -92,8 +83,6 @@ class BerandaPage extends StatelessWidget {
 
             Consumer<FavoritProvider>(
               builder: (context, favorit, child) {
-                // favorit adalah objek Provider yang digunakan
-                // untuk membaca jumlah favorit terbaru.
                 return Text(
                   'Jumlah favorit: ${favorit.jumlahFavorit}',
                 );
@@ -102,12 +91,8 @@ class BerandaPage extends StatelessWidget {
 
             const SizedBox(height: 8),
 
-            // BlocBuilder mendengarkan perubahan state
-            // dari BelanjaCubit yang bertipe int.
             BlocBuilder<BelanjaCubit, int>(
               builder: (context, jumlah) {
-                // jumlah berisi state terbaru dari Cubit,
-                // yaitu jumlah barang dalam keranjang.
                 return Text(
                   'Barang dalam keranjang: $jumlah',
                 );

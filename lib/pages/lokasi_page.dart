@@ -23,11 +23,9 @@ class LokasiPage extends StatelessWidget {
           zoom: 15,
         ),
 
-        // Marker digunakan untuk menandai lokasi tertentu.
         markers: {
           const Marker(
 
-            // ID unik untuk mengidentifikasi marker.
             markerId: MarkerId('Bank Sampah Hijau'),
 
             position: lokasiEcoMart,

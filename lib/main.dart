@@ -20,7 +20,6 @@ void main() {
   );
 }
 
-// Widget utama yang mengatur konfigurasi aplikasi.
 class EcoMartApp extends StatelessWidget {
   const EcoMartApp({super.key});
 
@@ -31,7 +30,6 @@ class EcoMartApp extends StatelessWidget {
 
       debugShowCheckedModeBanner: false,
 
-      // Menetapkan nama aplikasi.
       title: 'EcoMart',
       theme: ThemeData(
 

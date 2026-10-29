@@ -12,11 +12,9 @@ class BelanjaCubit extends Cubit<int> {
     }
   }
 
-  // Fungsi untuk mengurangi jumlah barang sebanyak 1.
   void kurangiBarang() {
     if (state > 0) {
 
-      // Mengirimkan state baru dengan jumlah dikurangi 1.
       emit(state - 1);
     }
   }
